@@ -1,1 +1,1034 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes" />
+    <title>TVVALENAREDE 25 ANOS | Notícias, Filmes e Entretenimento</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800&family=Open+Sans:wght@400;600;700&display=swap" />
+    <style>
+        /* ===== RESET & BASE ===== */
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        :root {
+            --primary: #0a2b3e;
+            --secondary: #ff9900;
+            --accent: #00a8e8;
+            --dark: #071a24;
+            --light: #f8f9fa;
+            --text: #1e2a32;
+            --text-light: #ffffff;
+            --shadow-sm: 0 8px 20px rgba(0, 0, 0, 0.08);
+            --shadow-md: 0 12px 28px rgba(0, 0, 0, 0.12);
+            --shadow-hover: 0 20px 35px -10px rgba(0, 0, 0, 0.2);
+            --gradient-gold: linear-gradient(135deg, #FFD700, #FF8C00);
+            --gradient-red: linear-gradient(135deg, #dc2626, #b91c1c);
+        }
+
+        body {
+            font-family: 'Open Sans', sans-serif;
+            background-color: #f4f7fc;
+            color: var(--text);
+            line-height: 1.5;
+            scroll-behavior: smooth;
+        }
+
+        /* ===== BANNERS PRONAC + GIF ROUANET NO TOPO ===== */
+        .pronac-top {
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px 16px;
+            background: linear-gradient(135deg, #071a24, #0a2b3e);
+            border-bottom: 4px solid #d6a63c;
+        }
+
+        .pronac-banners {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 1.5rem;
+            flex-wrap: wrap;
+            width: 100%;
+            max-width: 1400px;
+        }
+
+        /* Imagem PRONAC (estática) */
+        .pronac-img {
+            display: block;
+            height: auto;
+            max-height: 280px;
+            width: auto;
+            max-width: 100%;
+            object-fit: contain;
+            border-radius: 14px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.45);
+            border: 2px solid rgba(214, 166, 60, 0.4);
+            transition: transform 0.3s ease;
+        }
+        .pronac-img:hover { transform: scale(1.02); }
+
+        /* GIF Lei Rouanet Aprovada — GRANDE e em destaque */
+        .pronac-gif-btn {
+            background: transparent;
+            border: none;
+            padding: 0;
+            cursor: pointer;
+            line-height: 0;
+            display: block;
+        }
+        .pronac-gif {
+            display: block;
+            height: auto;
+            max-height: 280px;
+            width: auto;
+            max-width: 100%;
+            object-fit: contain;
+            border-radius: 14px;
+            border: 3px solid #FFD700;
+            box-shadow:
+                0 10px 30px rgba(0, 0, 0, 0.45),
+                0 0 30px rgba(255, 215, 0, 0.35);
+            transition: transform 0.3s ease, box-shadow 0.3s ease, filter 0.3s ease;
+            animation: gifGlow 2.4s ease-in-out infinite;
+        }
+        @keyframes gifGlow {
+            0%, 100% {
+                filter: brightness(1) drop-shadow(0 0 6px rgba(255, 215, 0, 0.4));
+                box-shadow: 0 10px 30px rgba(0, 0, 0, 0.45), 0 0 25px rgba(255, 215, 0, 0.3);
+            }
+            50% {
+                filter: brightness(1.08) drop-shadow(0 0 14px rgba(255, 215, 0, 0.85));
+                box-shadow: 0 12px 36px rgba(0, 0, 0, 0.5), 0 0 45px rgba(255, 215, 0, 0.75);
+            }
+        }
+        .pronac-gif-btn:hover .pronac-gif {
+            transform: scale(1.05);
+            animation-play-state: paused;
+        }
+
+        /* Mobile: empilha e ajusta tamanho */
+        @media (max-width: 900px) {
+            .pronac-banners { gap: 1rem; }
+            .pronac-img, .pronac-gif { max-height: 220px; }
+        }
+        @media (max-width: 680px) {
+            .pronac-top { padding: 12px 10px; }
+            .pronac-banners { flex-direction: column; gap: 0.9rem; }
+            .pronac-img, .pronac-gif { max-height: 200px; border-radius: 10px; }
+        }
+
+        /* ===== BANNER ANIMADO ===== */
+        .hero-banner {
+            background: var(--gradient-gold);
+            text-align: center;
+            padding: 1rem;
+            font-weight: 800;
+            font-size: 1.25rem;
+            letter-spacing: 1px;
+            color: #1e2a32;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 1rem;
+            flex-wrap: wrap;
+            border-bottom: 3px solid white;
+            animation: softPulse 2s infinite;
+        }
+        @keyframes softPulse {
+            0% { filter: brightness(1); }
+            50% { filter: brightness(1.05); }
+            100% { filter: brightness(1); }
+        }
+        .hero-banner i { font-size: 1.6rem; color: #b91c1c; }
+
+        .pimenta-wrapper {
+            background: var(--gradient-red);
+            text-align: center;
+            padding: 0.9rem;
+        }
+        .btn-pimenta {
+            display: inline-block;
+            background: black;
+            color: #ffdd44;
+            padding: 0.7rem 2rem;
+            border-radius: 60px;
+            font-weight: bold;
+            font-size: 1.2rem;
+            text-decoration: none;
+            transition: all 0.2s ease;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+            letter-spacing: 1px;
+        }
+        .btn-pimenta:hover {
+            transform: scale(1.02);
+            background: #1a1a1a;
+            color: #ffcc22;
+            box-shadow: 0 8px 18px black;
+        }
+
+        /* ===== HEADER ===== */
+        .main-header {
+            background: linear-gradient(145deg, var(--primary), var(--dark));
+            padding: 1.2rem 0;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: var(--shadow-sm);
+        }
+        .header-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+        .logo-area {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+        .logo-img {
+            height: 60px;
+            border-radius: 12px;
+            background: white;
+            padding: 4px;
+            flex-shrink: 0;
+        }
+        .logo-text h1 {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 1.6rem;
+            font-weight: 800;
+            color: white;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            flex-wrap: wrap;
+        }
+        .anos-badge {
+            background: var(--gradient-gold);
+            color: #1e2a32;
+            padding: 3px 12px;
+            border-radius: 20px;
+            font-size: 0.65em;
+            font-weight: 800;
+            letter-spacing: 0.5px;
+            box-shadow: 0 2px 8px rgba(255, 153, 0, 0.4);
+        }
+        .logo-text span {
+            font-size: 0.85rem;
+            color: #ffcc88;
+        }
+
+        .facebook-btn {
+            background: #1877f2;
+            color: white;
+            font-weight: 700;
+            padding: 0.6rem 1.4rem;
+            border-radius: 50px;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.6rem;
+            transition: all 0.2s ease;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+            font-size: 1rem;
+            border: none;
+            cursor: pointer;
+        }
+        .facebook-btn:hover {
+            transform: scale(1.05);
+            background: #1264d6;
+            box-shadow: 0 6px 18px rgba(24, 119, 242, 0.4);
+        }
+        .facebook-btn i { font-size: 1.2rem; }
+
+        .social-icons { display: flex; gap: 1.2rem; }
+        .social-icons a {
+            color: white;
+            font-size: 1.5rem;
+            transition: 0.2s;
+        }
+        .social-icons a:hover {
+            color: var(--secondary);
+            transform: translateY(-3px);
+        }
+
+        /* ===== BANNER GORILA ===== */
+        .gorila-banner-section {
+            background: linear-gradient(145deg, #0f1a24, #1a2e3f);
+            padding: 1.2rem 0;
+            text-align: center;
+            border-bottom: 4px solid var(--secondary);
+            border-top: 2px solid rgba(255, 255, 255, 0.05);
+            box-shadow: inset 0 4px 20px rgba(0, 0, 0, 0.3);
+        }
+        .gorila-banner-section .gorila-wrapper {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 1.5rem;
+        }
+        .gorila-banner-section a {
+            display: inline-block;
+            transition: transform 0.25s ease, box-shadow 0.3s ease;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.5);
+            max-width: 100%;
+            line-height: 0;
+        }
+        .gorila-banner-section a:hover {
+            transform: scale(1.015);
+            box-shadow: 0 14px 45px rgba(255, 153, 0, 0.25);
+        }
+        .gorila-banner-section a:active { transform: scale(0.97); }
+        .gorila-banner-section img {
+            width: 100%;
+            max-width: 1100px;
+            height: auto;
+            display: block;
+            border-radius: 20px;
+            margin: 0 auto;
+            background: #0a1a22;
+            border: 2px solid rgba(255, 153, 0, 0.2);
+            transition: border-color 0.3s ease;
+        }
+        .gorila-banner-section a:hover img { border-color: var(--secondary); }
+        .gorila-badge {
+            display: inline-block;
+            background: var(--secondary);
+            color: #1e2a32;
+            font-weight: 800;
+            padding: 0.4rem 1.8rem;
+            border-radius: 60px;
+            margin-top: 0.5rem;
+            font-size: 0.9rem;
+            letter-spacing: 0.5px;
+            box-shadow: 0 4px 12px rgba(255, 153, 0, 0.3);
+        }
+        .gorila-badge i { margin-right: 0.5rem; }
+
+        /* ===== NAV ===== */
+        .main-nav {
+            background: var(--secondary);
+            padding: 0.7rem 0;
+            position: sticky;
+            top: 95px;
+            z-index: 999;
+        }
+        .nav-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            align-items: center;
+            gap: 1rem;
+        }
+        .nav-links {
+            display: flex;
+            gap: 1.5rem;
+            list-style: none;
+            flex-wrap: wrap;
+        }
+        .nav-links a {
+            color: #1e2a32;
+            font-weight: 700;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            font-size: 0.95rem;
+        }
+        .nav-links a:hover { color: white; }
+        .search-box {
+            display: flex;
+            background: white;
+            border-radius: 40px;
+            overflow: hidden;
+        }
+        .search-box input { border: none; padding: 0.5rem 1rem; width: 220px; }
+        .search-box button {
+            background: var(--primary);
+            color: white;
+            border: none;
+            padding: 0 1rem;
+            cursor: pointer;
+        }
+
+        /* ===== TOP BUTTONS ===== */
+        .top-buttons-bar {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 1.2rem;
+            background: var(--dark);
+            padding: 1.2rem 1rem;
+        }
+        .top-btn {
+            background: linear-gradient(145deg, #ff9900, #cc7a00);
+            padding: 0.7rem 1.6rem;
+            border-radius: 50px;
+            color: white;
+            font-weight: bold;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            transition: 0.2s;
+        }
+        .top-btn.perfumaria { background: linear-gradient(145deg, #ff6b9c, #d8436e); }
+        .top-btn.advogados { background: linear-gradient(145deg, #4a90e2, #2a5caa); }
+        .top-btn.casa-irmaos { background: linear-gradient(145deg, #34c759, #2aa44f); }
+        .top-btn.shekinah { background: linear-gradient(145deg, #9b59b6, #8e44ad); }
+        .top-btn.valesom { background: linear-gradient(145deg, #e67e22, #d35400); }
+        .top-btn.casa-bateria { background: linear-gradient(145deg, #2ecc71, #1e8449); }
+        .top-btn:hover { transform: translateY(-3px); filter: brightness(1.05); }
+
+        /* ===== MAIN GRID ===== */
+        .main-grid {
+            max-width: 1400px;
+            margin: 2rem auto;
+            padding: 0 1.5rem;
+            display: grid;
+            grid-template-columns: 280px 1fr;
+            gap: 2rem;
+        }
+
+        /* ===== SIDEBAR ===== */
+        .sidebar-menu {
+            background: white;
+            border-radius: 24px;
+            padding: 1.5rem;
+            box-shadow: var(--shadow-sm);
+            height: fit-content;
+        }
+        .sidebar-menu h3 {
+            font-family: 'Montserrat', sans-serif;
+            border-left: 5px solid var(--secondary);
+            padding-left: 1rem;
+            margin-bottom: 1.5rem;
+            color: var(--primary);
+        }
+        .side-link {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            background: #f0f4f8;
+            margin-bottom: 0.8rem;
+            padding: 0.8rem 1rem;
+            border-radius: 60px;
+            text-decoration: none;
+            color: var(--primary);
+            font-weight: 600;
+            transition: 0.2s;
+        }
+        .side-link i { width: 24px; color: var(--secondary); }
+        .side-link:hover {
+            background: var(--secondary);
+            color: white;
+            transform: translateX(5px);
+        }
+        .side-link:hover i { color: white; }
+
+        /* ===== CONTENT ===== */
+        .content-area {
+            display: flex;
+            flex-direction: column;
+            gap: 2rem;
+        }
+        .featured-movie {
+            background: white;
+            border-radius: 28px;
+            overflow: hidden;
+            box-shadow: var(--shadow-md);
+        }
+        .movie-header {
+            background: var(--primary);
+            padding: 1rem 1.8rem;
+            color: white;
+        }
+        .movie-header h2 {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 1.6rem;
+        }
+        .video-responsive { position: relative; padding-bottom: 56.25%; height: 0; }
+        .video-responsive iframe {
+            position: absolute;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
+            border: none;
+        }
+        .movie-info { padding: 1.5rem; background: #fef9e6; }
+
+        .section-card {
+            background: white;
+            border-radius: 28px;
+            padding: 1.8rem;
+            box-shadow: var(--shadow-sm);
+        }
+        .section-title {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 1.8rem;
+            margin-bottom: 1.5rem;
+            border-bottom: 3px solid var(--secondary);
+            display: inline-block;
+            padding-bottom: 6px;
+        }
+        .news-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 1.5rem;
+        }
+        .news-card {
+            background: white;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: var(--shadow-sm);
+            transition: 0.2s;
+        }
+        .news-card:hover { transform: translateY(-6px); box-shadow: var(--shadow-hover); }
+        .news-card img { width: 100%; height: 170px; object-fit: cover; }
+        .news-content { padding: 1rem; }
+
+        .video-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 1.5rem;
+        }
+        .video-item { background: #f9f9ff; border-radius: 20px; overflow: hidden; }
+
+        .video-destaque-card {
+            background: white;
+            border-radius: 28px;
+            overflow: hidden;
+            box-shadow: var(--shadow-md);
+        }
+        .video-destaque-card .video-header {
+            background: var(--primary);
+            padding: 1rem 1.8rem;
+            color: white;
+        }
+        .video-destaque-card .video-header h2 {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 1.5rem;
+        }
+        .video-destaque-card .video-responsive { position: relative; padding-bottom: 56.25%; height: 0; }
+        .video-destaque-card .video-responsive iframe {
+            position: absolute;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
+            border: none;
+        }
+
+        .social-links-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+        .social-card {
+            background: var(--primary);
+            text-align: center;
+            padding: 1rem;
+            border-radius: 28px;
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        .contact-form {
+            background: linear-gradient(120deg, var(--primary), #0f3b4f);
+            border-radius: 28px;
+            padding: 2rem;
+            color: white;
+        }
+
+        /* ===== FOOTER ===== */
+        .footer {
+            background: var(--dark);
+            color: #ccc;
+            padding: 2rem 1rem;
+            margin-top: 3rem;
+        }
+        .footer-grid {
+            max-width: 1400px;
+            margin: auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+        }
+        .footer-github {
+            text-align: center;
+            margin-top: 1.5rem;
+            font-size: 0.9rem;
+            color: #888;
+            border-top: 1px solid #333;
+            padding-top: 1.5rem;
+        }
+        .footer-github i { color: var(--secondary); margin-right: 6px; }
+        .fixed-right,
+        .fixed-left {
+            position: fixed;
+            bottom: 25px;
+            padding: 0.8rem 1.2rem;
+            border-radius: 50px;
+            background: var(--secondary);
+            color: black;
+            font-weight: bold;
+            text-decoration: none;
+            box-shadow: var(--shadow-md);
+            z-index: 999;
+        }
+        .fixed-right { right: 20px; }
+        .fixed-left { left: 20px; background: var(--accent); color: white; }
+
+        /* ===== MODAL ===== */
+        .modal-overlay {
+            display: none;
+            position: fixed;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
+            background: rgba(0, 0, 0, 0.85);
+            z-index: 9999;
+            justify-content: center;
+            align-items: center;
+            padding: 2rem;
+            animation: fadeIn 0.3s ease;
+        }
+        .modal-overlay.active { display: flex; }
+        @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+        .modal-content {
+            background: #1a1a2e;
+            border-radius: 30px;
+            max-width: 1100px;
+            width: 100%;
+            padding: 2rem;
+            position: relative;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.8);
+        }
+        .modal-close {
+            position: absolute;
+            top: 10px; right: 20px;
+            color: white;
+            font-size: 2.5rem;
+            font-weight: bold;
+            cursor: pointer;
+            transition: 0.2s;
+            background: none;
+            border: none;
+            line-height: 1;
+        }
+        .modal-close:hover { color: #ff9900; transform: rotate(90deg); }
+        .modal-images {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1.5rem;
+            justify-content: center;
+            margin-top: 1rem;
+        }
+        .modal-images img {
+            max-width: 100%;
+            max-height: 70vh;
+            border-radius: 16px;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.5);
+            flex: 1 1 280px;
+            object-fit: contain;
+            background: #111;
+        }
+        .modal-title {
+            color: white;
+            font-family: 'Montserrat', sans-serif;
+            text-align: center;
+            font-size: 1.5rem;
+            margin-bottom: 0.5rem;
+        }
+        .modal-title i { color: #1877f2; margin-right: 10px; }
+
+        /* ===== RESPONSIVE ===== */
+        @media (max-width: 1024px) {
+            .main-grid { grid-template-columns: 1fr; }
+            .sidebar-menu { display: none; }
+            .facebook-btn { font-size: 0.9rem; padding: 0.4rem 1rem; }
+        }
+
+        @media (max-width: 680px) {
+            .header-container { flex-direction: column; text-align: center; }
+            .logo-area { justify-content: center; }
+            .logo-img { height: 50px; }
+            .logo-text h1 { font-size: 1.25rem; justify-content: center; }
+            .nav-container { flex-direction: column; }
+            .search-box { width: 100%; }
+            .facebook-btn { order: 3; }
+            .modal-content { padding: 1rem; }
+            .modal-images img { max-height: 40vh; }
+            .gorila-banner-section img { border-radius: 12px; }
+            .gorila-banner-section { padding: 0.8rem 0; }
+            .gorila-badge { font-size: 0.75rem; padding: 0.3rem 1.2rem; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- ====== TOPO: BANNER PRONAC + GIF LEI ROUANET LADO A LADO ====== -->
+    <section class="pronac-top" aria-label="Projetos aprovados pela Lei Rouanet">
+        <div class="pronac-banners">
+
+            <!-- Imagem estática PRONAC -->
+            <img
+                src="https://raw.githubusercontent.com/tvvalenarede/bonani3/main/PRONAC1.png"
+                alt="TVVALENAREDE — projeto cultural aprovado pela Lei Rouanet, PRONAC"
+                class="pronac-img"
+                fetchpriority="high"
+            />
+
+            <!-- GIF animado Lei Rouanet Aprovada — grande e em destaque -->
+            <button
+                class="pronac-gif-btn"
+                id="openGifModal"
+                type="button"
+                title="Lei Rouanet Aprovada — clique para ver os contratos"
+                aria-label="Lei Rouanet Aprovada — TVVALENAREDE"
+            >
+                <img
+                    src="https://raw.githubusercontent.com/tvvalenarede/bonani3/main/rouanet-aprovada-tvvalenarede.gif"
+                    alt="Lei Rouanet Aprovada — TVVALENAREDE 25 Anos"
+                    class="pronac-gif"
+                    loading="eager"
+                    fetchpriority="high"
+                />
+            </button>
+
+        </div>
+    </section>
+
+    <!-- ====== BANNER E CABEÇALHO ====== -->
+    <div class="hero-banner">
+        <i class="fas fa-film"></i> TVVALENAREDE 25 ANOS — AGORA PRODUZ FILMES | "SEGREDO INVISÍVEL" EM DESTAQUE <i class="fas fa-ticket-alt"></i>
+    </div>
+    <div class="pimenta-wrapper">
+        <a href="https://tvvalenarede.github.io/tv1/" class="btn-pimenta"><i class="fas fa-eye"></i> ASSISTIR TEORIA DO ABSURDO</a>
+    </div>
+
+    <!-- ====== HEADER ====== -->
+    <header class="main-header">
+        <div class="header-container">
+            <div class="logo-area">
+                <img
+                    src="https://github.com/tvvalenarede/bonani3/raw/main/logocerto2025.png"
+                    alt="Logo TVVALENAREDE"
+                    class="logo-img"
+                />
+                <div class="logo-text">
+                    <h1>TVVALENAREDE <span class="anos-badge">25 ANOS</span></h1>
+                    <span>Lei Rouanet Aprovada | WhatsApp: (12) 99769-0407</span>
+                </div>
+            </div>
+
+            <button class="facebook-btn" id="openFacebookModal">
+                <i class="fab fa-facebook"></i> Facebook Contrato
+            </button>
+
+            <div class="social-icons">
+                <a href="https://www.facebook.com/TVRBRAZIL" target="_blank"><i class="fab fa-facebook"></i></a>
+                <a href="https://www.instagram.com/tvvalenarede" target="_blank"><i class="fab fa-instagram"></i></a>
+                <a href="https://youtube.com/tvvalenarede" target="_blank"><i class="fab fa-youtube"></i></a>
+                <a href="https://www.tiktok.com/@tvvalenarede" target="_blank"><i class="fab fa-tiktok"></i></a>
+            </div>
+        </div>
+    </header>
+
+    <!-- ====== BANNER GORILA ====== -->
+    <section class="gorila-banner-section">
+        <div class="gorila-wrapper">
+            <a href="https://www.youtube.com/shorts/YWi1bgrwbHk" target="_blank" rel="noopener noreferrer" title="Assistir no YouTube">
+                <img
+                    src="https://raw.githubusercontent.com/tvvalenarede/bonani3/main/GORILACARTAZSITE.fw.png"
+                    alt="Gorila Carta Z Site - Clique para assistir"
+                    loading="lazy"
+                />
+            </a>
+            <div class="gorila-badge">
+                <i class="fab fa-youtube"></i> CLIQUE NA IMAGEM E ASSISTA AGORA
+            </div>
+        </div>
+    </section>
+
+    <!-- ====== NAV ====== -->
+    <nav class="main-nav">
+        <div class="nav-container">
+            <ul class="nav-links">
+                <li><a href="#"><i class="fas fa-home"></i> Início</a></li>
+                <li><a href="#noticias"><i class="fas fa-newspaper"></i> Notícias</a></li>
+                <li><a href="#videos"><i class="fas fa-video"></i> Vídeos</a></li>
+                <li><a href="#destaque"><i class="fas fa-star"></i> Destaque</a></li>
+                <li><a href="#esportes"><i class="fas fa-futbol"></i> Esportes</a></li>
+                <li><a href="#entretenimento"><i class="fas fa-microphone-alt"></i> Entretenimento</a></li>
+            </ul>
+            <div class="search-box">
+                <input type="text" placeholder="Buscar notícias..." />
+                <button><i class="fas fa-search"></i></button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- ====== BOTÕES PARCEIROS ====== -->
+    <div class="top-buttons-bar">
+        <a href="https://tvvalenarede.github.io/tv1/" class="top-btn perfumaria"><i class="fas fa-spa"></i> BAR DO OSMAR</a>
+        <a href="https://tvvalenarede.webnode.page/" class="top-btn advogados"><i class="fas fa-gavel"></i> J.E.C.S Advogados</a>
+        <a href="https://casa3-irmaos.webnode.page/" class="top-btn casa-irmaos"><i class="fas fa-home"></i> Casa 3 Irmãos</a>
+        <a href="https://tvvalenarede.github.io/jogos/" class="top-btn shekinah"><i class="fas fa-bolt"></i> Shekinah Energéticos</a>
+        <a href="https://www.instagram.com/centroauditivovalesom/" class="top-btn valesom"><i class="fas fa-music"></i> VALESOM</a>
+        <a href="#" class="top-btn casa-bateria"><i class="fas fa-drum"></i> CASA DA BATERIA</a>
+    </div>
+
+    <!-- ====== GRID PRINCIPAL ====== -->
+    <div class="main-grid">
+        <!-- SIDEBAR -->
+        <aside class="sidebar-menu">
+            <h3><i class="fas fa-bars"></i> MENU TVVALENAREDE</h3>
+            <a href="https://tvvalenarede.github.io/redesocial1/" class="side-link"><i class="fas fa-futbol"></i> SITE DO MAICON JOGADOR</a>
+            <a href="https://www.facebook.com/TVRBRAZIL" class="side-link"><i class="fas fa-tv"></i> TVVALENAREDE AO VIVO</a>
+            <a href="https://tvvalenarede.github.io/jogos/" class="side-link"><i class="fas fa-bolt"></i> Shekinah Energéticos</a>
+            <a href="https://casa3-irmaos.webnode.page" class="side-link"><i class="fas fa-home"></i> CASA 3 IRMÃOS</a>
+            <a href="https://www.youtube.com/watch?v=z2j0Yzf8Myk&t=34s" class="side-link"><i class="fas fa-trophy"></i> PREMIAÇÃO ACEESP</a>
+            <a href="https://made-center7.webnode.page" class="side-link"><i class="fas fa-futbol"></i> FUTEBOL</a>
+            <a href="https://www.youtube.com/channel/UC2d71oRHuTsosOap7GeYT4g" class="side-link"><i class="fab fa-youtube"></i> YOUTUBE LIVE</a>
+            <a href="https://bar-do-osmar-de-taubate-s-p.webnode.page/" class="side-link"><i class="fas fa-beer"></i> BAR DO OSMAR</a>
+            <a href="https://serginhos-centro-automotivo-de-taubate.webnode.page/" class="side-link"><i class="fas fa-car"></i> SERGINHO PNEUS</a>
+        </aside>
+
+        <!-- CONTEÚDO PRINCIPAL -->
+        <div class="content-area">
+
+            <!-- FILME PRINCIPAL + ENTREVISTA -->
+            <div class="featured-movie">
+                <div class="movie-header">
+                    <h2><i class="fas fa-video"></i> FILME SEGREDO INVISÍVEL + ENTREVISTA EXCLUSIVA</h2>
+                </div>
+                <div class="video-responsive">
+                    <iframe src="https://www.youtube.com/embed/nB1sSZ89uEw" title="Filme Segredo Invisível" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                </div>
+                <div class="movie-info">
+                    <p><strong>🎬 “SEGREDO INVISÍVEL”</strong> – Primeiro longa produzido pela TVVALENAREDE. Suspense eletrizante com atores locais. Abaixo, a entrevista com a atriz Jéssica Miller.</p>
+                </div>
+                <div class="video-responsive" style="margin-top: 0.5rem;">
+                    <iframe src="https://www.youtube.com/embed/3SAhvCfJcMY" title="Entrevista Jessica Miller" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                </div>
+                <div class="movie-info" style="background: #eef2ff;">
+                    <h3>🎙️ Entrevista com Jéssica Miller (atriz do filme)</h3>
+                    <p>Jéssica revela bastidores e desafios da produção, além de novidades da TVVALENAREDE.</p>
+                </div>
+            </div>
+
+            <!-- COMERCIAL 3D ADVOGADOS -->
+            <div class="section-card">
+                <h3 class="section-title">⚡ Comercial 3D | J.E.C.S Advogados</h3>
+                <div class="video-responsive">
+                    <iframe src="https://www.youtube.com/embed/uzUbXqkAugo" title="Comercial JECS Advogados" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                </div>
+                <p style="margin-top: 1rem;"><strong>FILME TEORIA DO ABSURDO:</strong> Os astronautas chegam em Marte e encontram esqueleto humano. "Mostrando que os humanos originaram do planeta Marte?" - "Filme que muda tudo o que se achava da origem da vida no Planeta Terra."</p>
+            </div>
+
+            <!-- NOTÍCIAS -->
+            <div class="section-card" id="noticias">
+                <h3 class="section-title"><i class="far fa-newspaper"></i> Últimas Notícias</h3>
+                <div class="news-grid">
+                    <div class="news-card"><img src="https://images.unsplash.com/photo-1588681664899-f142ff2dc9b1" alt="Política" />
+                        <div class="news-content"><span class="news-category" style="background:#ff9900; padding:2px 8px; border-radius:20px;">Política</span>
+                            <h4>Novas medidas econômicas</h4>
+                            <p>Governo anuncia pacote para crescimento e controle da inflação.</p>
+                        </div>
+                    </div>
+                    <div class="news-card"><img src="https://images.unsplash.com/photo-1461896836934-ffe607ba8211" alt="Esportes" />
+                        <div class="news-content"><span class="news-category" style="background:#ff9900;">Esportes</span>
+                            <h4>Time local campeão estadual</h4>
+                            <p>Após 10 anos, time levanta taça com vitória de 3 a 1.</p>
+                        </div>
+                    </div>
+                    <div class="news-card"><img src="https://images.unsplash.com/photo-1514525253161-7a46d19cd819" alt="Cultura" />
+                        <div class="news-content"><span class="news-category" style="background:#ff9900;">Cultura</span>
+                            <h4>Festival de cinema nacional</h4>
+                            <p>Entrada gratuita para diversas produções brasileiras.</p>
+                        </div>
+                    </div>
+                    <div class="news-card"><img src="https://images.unsplash.com/photo-1576091160399-112ba8d25d15" alt="Saúde" />
+                        <div class="news-content"><span class="news-category" style="background:#ff9900;">Saúde</span>
+                            <h4>Nova UPA na região norte</h4>
+                            <p>Unidade atenderá mais de 50 mil pessoas.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- VÍDEOS -->
+            <div class="section-card" id="videos">
+                <h3 class="section-title"><i class="fas fa-film"></i> FILMES PRODUZIDOS PELA TVVALENAREDE</h3>
+                <div class="video-grid">
+                    <div class="video-item">
+                        <div class="video-responsive"><iframe src="https://www.youtube.com/embed/3SAhvCfJcMY" title="Entrevista Jessica Miller" frameborder="0" allowfullscreen></iframe></div>
+                        <div class="movie-info" style="padding: 1rem;"><strong>🎬 Entrevista com Jéssica Miller</strong> – Bastidores do filme "Segredo Invisível".</div>
+                    </div>
+                    <div class="video-item">
+                        <div class="video-responsive"><iframe src="https://www.youtube.com/embed/uzUbXqkAugo" title="Comercial J.E.C.S" frameborder="0" allowfullscreen></iframe></div>
+                        <div class="movie-info" style="padding: 1rem;"><strong>📺 Comercial Profissional</strong> – Advogados Associados J.E.C.S (3D realista).</div>
+                    </div>
+                    <div class="video-item">
+                        <div class="video-responsive"><iframe src="https://www.youtube.com/embed/z2j0Yzf8Myk" title="Premiação ACEESP" frameborder="0" allowfullscreen></iframe></div>
+                        <div class="movie-info" style="padding: 1rem;"><strong>🏆 Premiação ACEESP</strong> – Evento especial de destaque.</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- DESTAQUE -->
+            <div class="video-destaque-card" id="destaque">
+                <div class="video-header">
+                    <h2><i class="fas fa-play-circle"></i> TVVALENAREDE – DESTAQUE ESPECIAL</h2>
+                </div>
+                <div class="video-responsive">
+                    <iframe src="https://www.youtube.com/embed/FDUqkXiuCwE?start=2" title="Vídeo em destaque - TVVALENAREDE" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                </div>
+                <div class="movie-info" style="background: #f0f4ff;">
+                    <p><strong>📽️ Filme em destaque:</strong> Assista agora ao trailer exclusivo e fique por dentro das novidades da TVVALENAREDE.</p>
+                </div>
+            </div>
+
+            <!-- REDES SOCIAIS E PARCEIROS -->
+            <div class="social-links-grid">
+                <a href="https://made-center7.webnode.page" class="social-card">⚽ FUTEBOL</a>
+                <a href="https://www.youtube.com/channel/UC2d71oRHuTsosOap7GeYT4g" class="social-card">📺 YOUTUBE LIVE</a>
+                <a href="https://bar-do-osmar-de-taubate-s-p.webnode.page/" class="social-card">🍻 BAR DO OSMAR</a>
+                <a href="https://casa3-irmaos.webnode.page/" class="social-card">🏠 CASA 3 IRMÃOS</a>
+                <a href="https://tvvalenarede.webnode.page/" class="social-card">⚖️ J.E.C.S Advogados</a>
+                <a href="https://serginhos-centro-automotivo-de-taubate.webnode.page/" class="social-card">🚗 SERGINHO PNEUS</a>
+            </div>
+
+            <!-- FORMULÁRIO -->
+            <form class="contact-form" id="contactForm" action="https://formsubmit.co/tvrbrazil@gmail.com" method="POST">
+                <h3><i class="fas fa-envelope-open-text"></i> Fale Conosco</h3>
+                <input type="text" name="Nome" placeholder="Seu nome" required style="width:100%; margin:8px 0; padding:12px; border-radius:30px; border:none;" />
+                <input type="email" name="E-mail" placeholder="Seu e-mail" required style="width:100%; margin:8px 0; padding:12px; border-radius:30px;" />
+                <textarea name="Mensagem" rows="4" placeholder="Sua mensagem" required style="width:100%; margin:8px 0; padding:12px; border-radius:20px;"></textarea>
+                <input type="hidden" name="_subject" value="Contato via site TVVALENAREDE" />
+                <button type="submit" style="background:#ff9900; border:none; padding:12px; border-radius:60px; font-weight:bold; width:100%; margin-top:10px; cursor:pointer;">📨 ENVIAR MENSAGEM</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- ====== FOOTER ====== -->
+    <footer class="footer">
+        <div class="footer-grid">
+            <div>
+                <h4>TVVALENAREDE</h4>
+                <p>25 anos levando informação e entretenimento. Agora produzindo filmes.</p>
+            </div>
+            <div>
+                <h4>Parceiros</h4>
+                <ul style="list-style:none;">
+                    <li>Bar do Osmar</li>
+                    <li>J.E.C.S Advogados</li>
+                    <li>Casa 3 Irmãos</li>
+                    <li>Shekinah Energéticos</li>
+                    <li>VALESOM</li>
+                    <li>CASA DA BATERIA</li>
+                </ul>
+            </div>
+            <div>
+                <h4>Contato</h4>
+                <p><i class="fas fa-phone"></i> (12) 99769-0407<br /><i class="fas fa-envelope"></i> tvbonani@gmail.com<br />Taubaté - SP</p>
+            </div>
+        </div>
+        <div class="footer-github">
+            <i class="fab fa-github"></i> Hospedado no GitHub · <a href="https://github.com/tvvalenarede" target="_blank" style="color:#ff9900; text-decoration:none;">tvvalenarede</a>
+        </div>
+        <div style="text-align:center; margin-top:0.5rem; font-size:0.8rem;">© 2026 TVVALENAREDE.COM.BR - Todos os direitos reservados</div>
+    </footer>
+
+    <!-- ====== BOTÕES FLUTUANTES ====== -->
+    <a href="https://www.youtube.com/watch?v=F_JiRVhsgZ8&t=13s" class="fixed-right"><i class="fas fa-bolt"></i> PROGRAMA SHEKINAH</a>
+    <a href="https://tvvalenarede.webnode.page/" class="fixed-left"><i class="fas fa-gavel"></i> J.E.C.S</a>
+
+    <!-- ====== MODAL FACEBOOK ====== -->
+    <div class="modal-overlay" id="facebookModal">
+        <div class="modal-content">
+            <button class="modal-close" id="closeModal">&times;</button>
+            <div class="modal-title">
+                <i class="fab fa-facebook"></i> Fotos - TVVALENAREDE
+            </div>
+            <div class="modal-images">
+                <img src="https://tvvalenarede.github.io/bonani3/fotofacebook1.fw.png" alt="Facebook 1" />
+                <img src="https://tvvalenarede.github.io/bonani3/facebookcontrato11.png" alt="Facebook 2" />
+                <img src="https://tvvalenarede.github.io/bonani3/facebookevento.png" alt="Facebook 3" />
+            </div>
+        </div>
+    </div>
+
+    <!-- ====== SCRIPTS ====== -->
+    <script>
+        // ========== MODAL FACEBOOK ==========
+        const openBtn = document.getElementById('openFacebookModal');
+        const openGifBtn = document.getElementById('openGifModal');
+        const modal = document.getElementById('facebookModal');
+        const closeBtn = document.getElementById('closeModal');
+
+        function openModal() {
+            modal.classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+        function closeModalFn() {
+            modal.classList.remove('active');
+            document.body.style.overflow = '';
+        }
+
+        openBtn.addEventListener('click', openModal);
+        if (openGifBtn) openGifBtn.addEventListener('click', openModal);
+        closeBtn.addEventListener('click', closeModalFn);
+        modal.addEventListener('click', (e) => {
+            if (e.target === modal) closeModalFn();
+        });
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') closeModalFn();
+        });
+
+        // ========== FORMULÁRIO ==========
+        const form = document.getElementById('contactForm');
+        if (form) {
+            form.addEventListener('submit', (e) => {
+                const email = form.querySelector('input[name="E-mail"]').value;
+                const msg = form.querySelector('textarea[name="Mensagem"]').value;
+                if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+                    alert('Por favor, insira um e-mail válido.');
+                    e.preventDefault();
+                    return;
+                }
+                if (msg.trim().length < 5) {
+                    alert('A mensagem deve ter pelo menos 5 caracteres.');
+                    e.preventDefault();
+                    return;
+                }
+                if (confirm('Enviar mensagem para TVVALENAREDE?')) {
+                    alert('Enviado com sucesso! Entraremos em contato.');
+                } else {
+                    e.preventDefault();
+                }
+            });
+        }
+
+        // ========== BUSCA ==========
+        const searchBtn = document.querySelector('.search-box button');
+        if (searchBtn) {
+            searchBtn.addEventListener('click', () => {
+                alert('🔍 Busca em desenvolvimento em breve. Use as seções do site.');
+            });
+        }
+    </script>
+
+</body>
+</html>
 
